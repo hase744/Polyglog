@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.css">
+    <title>TemplateDir</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.css">
+    <link rel="stylesheet" href="application.css">
+    <title>Document</title>
+    <ul>
+      <li class="menu_on_left"><a class="active" href="#home">Polyglog</a></li>
+      <li class="menu_on_left"><%= link_to "People", '/people/index'%></li>
+      <li class="menu_on_left"><a href="#contact">Contact</a></li>
+      <li class="menu_on_left"><a href="#about">About</a></li>
+      <%if person_signed_in? %>
+        <li class="menu_on_right"><%= link_to "ログアウト", destroy_person_session_path, method: :delete%></li>
+      <%else%>
+        <li class="menu_on_right"><%= link_to "login", new_person_session_path%></li>
+      <%end%>
+    </ul>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
+
+    
+
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
