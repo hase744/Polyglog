@@ -1,4 +1,5 @@
 class PeopleController < ApplicationController
+  before_action :ensure_correct_person, {only:[:edit_profile, :update, :destroy]}
   def index
     @people = Person.all
   end
@@ -37,6 +38,18 @@ class PeopleController < ApplicationController
     obj = Person.find(params[:id])
     obj.update(person_params)
     redirect_to "/people/#{params[:id]}"
+    #File.binwrite("public/person_images/#{@person.name}",image.read)
+  end
+
+  def ensure_correct_person
+    if current_person == nil
+      redirect_to("/people/#{params[:id]}")
+    else
+      if params[:id].to_i == current_person.id
+      else
+       redirect_to("/people/index")
+      end
+    end
   end
 
   private

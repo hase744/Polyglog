@@ -18,5 +18,9 @@
       <label for = "self_introduction">self introduction</label>
       <%= form.text_area :self_introduction, class: "form-control" %>
     </div>
+    <div class = "form-group" >
+      <label for = "self_introduction">Image</label><br>
+      <%= form.file_field :image%>
+    </div>
     <%= form.submit class:"btn btn-primary" %>
 <% end %>
