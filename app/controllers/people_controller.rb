@@ -28,7 +28,7 @@ class PeopleController < ApplicationController
     redirect_to "/people/index"
   end
 
-  def edit
+  def edit_profile
     @person = Person.find(params[:id])
   end
 
@@ -40,7 +40,7 @@ class PeopleController < ApplicationController
 
   private
   def person_params
-    params.require(:person).permit(:name, :mail)
+    params.require(:person).permit(:name, :native_language, :language_to_study)
     #, :password, :self_introduction, :mother_tongue, :language_studie
   end
 end

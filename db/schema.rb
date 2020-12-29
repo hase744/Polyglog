@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_28_162019) do
+ActiveRecord::Schema.define(version: 2020_12_28_173357) do
 
   create_table "people", force: :cascade do |t|
     t.text "name"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2020_12_28_162019) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.string "native_language"
+    t.string "language_to_study"
     t.index ["email"], name: "index_people_on_email", unique: true
     t.index ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true
   end

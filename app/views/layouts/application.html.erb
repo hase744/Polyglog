@@ -13,21 +13,20 @@
     <title>Document</title>
     <ul>
       <li class="menu_on_left"><a class="active" href="#home">Polyglog</a></li>
+      
       <li class="menu_on_left"><%= link_to "People", '/people/index'%></li>
-      <li class="menu_on_left"><a href="#contact">Contact</a></li>
+      <% if current_person != nil %>
+      <li class="menu_on_left"><%= link_to "Profile", "/people/edit_profile/#{current_person.id}" %></li>
+      <% end %>
       <li class="menu_on_left"><a href="#about">About</a></li>
       <%if person_signed_in? %>
-        <li class="menu_on_right"><%= link_to "ログアウト", destroy_person_session_path, method: :delete%></li>
+        <li class="menu_on_right"><%= link_to "logout", destroy_person_session_path, method: :delete%></li>
       <%else%>
         <li class="menu_on_right"><%= link_to "login", new_person_session_path%></li>
       <%end%>
     </ul>
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
-
-
-    
-
   </head>
 
   <body>

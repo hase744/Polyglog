@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'people/edit'
   post "people/create", to:"people#create"
   get "people/delete/:id", to:"people#delete"
-  get "people/edit/:id", to:"people#edit"
+  get "people/edit_profile/:id", to:"people#edit_profile"
   post "people/update/:id", to:"people#update"
   patch "people/update/:id", to:"people#update"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

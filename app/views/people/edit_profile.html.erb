@@ -1,0 +1,18 @@
+<h1>People#edit</h1>
+<p>Find me in app/views/people/edit.html.erb</p>
+<h1><%=current_person.id%></h1>
+<%=form_for(@person, url:{controller:"people",action:"update",id:@person.id}) do |form| %>
+    <div class = "form-group" >
+      <label for = "name">Name</label>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+    <div class = "form-group" >
+      <label for = "native_language">What is your native language</label>
+      <h4><%= form.select :native_language,[["your language is not selected", nil], ["English", "English"], ["日本語", "Jpanese"]], class: "form-control" %></h4>
+    </div>
+    <div class = "form-group" >
+      <label for = "language_to_study">What language do you study?</label>
+      <h4><%= form.select :language_to_study,[["your language is not selected", nil], ["English", "English"], ["日本語", "Jpanese"]], class: "form-control" %></h4>
+    </div>
+    <%= form.submit class:"btn btn-primary" %>
+<% end %>
