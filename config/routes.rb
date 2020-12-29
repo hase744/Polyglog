@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :people
   get 'people/index'
   get 'people/add'
-  get 'people/show'
+  get 'people/:id', to:'people#show'
   get 'people/edit'
   post "people/create", to:"people#create"
   get "people/delete/:id", to:"people#delete"

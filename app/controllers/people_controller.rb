@@ -4,6 +4,7 @@ class PeopleController < ApplicationController
   end
 
   def show
+    @person = Person.find(params[:id])
   end
 
   def add
@@ -35,12 +36,12 @@ class PeopleController < ApplicationController
   def update
     obj = Person.find(params[:id])
     obj.update(person_params)
-    redirect_to "/people/index"
+    redirect_to "/people/#{params[:id]}"
   end
 
   private
   def person_params
-    params.require(:person).permit(:name, :native_language, :language_to_study)
+    params.require(:person).permit(:name, :native_language, :language_to_study, :self_introduction)
     #, :password, :self_introduction, :mother_tongue, :language_studie
   end
 end

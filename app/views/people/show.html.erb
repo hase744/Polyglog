@@ -1,2 +1,15 @@
-<h1>People#show</h1>
-<p>Find me in app/views/people/show.html.erb</p>
+
+  <div id="ww">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 centered">
+          <img src=<%="/user_images/user.png" %> alt="Stanley">
+          <h1><%=@person.name%></h1>
+          <h5>native language : <%=@person.native_language%></h5>
+          <h5>language I study : <%=@person.language_to_study%></h5>
+          <p><%=@person.self_introduction %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
