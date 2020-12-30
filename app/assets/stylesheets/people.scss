@@ -47,6 +47,36 @@ body {
     background-color: #f2f2f2;
   }
   
-  
+/*people_show*/
+  img{
+    width:170px;
+    height:170px;
+    border-radius: 50%;
+  }
+
+/*edit_profile*/
+.form-group {
+	position: relative;
+	width: 80%;
+	margin: 40px 3%;
+}
+
+.form-group h4[type='text'] {
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #aaaaaa;
+	border: none;
+	border-bottom: 2px solid #1b2538;
+	background: transparent;
+}
+
+.form-group input[type='text']:focus {
+	border-bottom: 2px solid #FFA500;
+	outline: none;
+}
   
   

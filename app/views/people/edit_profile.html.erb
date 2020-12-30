@@ -1,10 +1,8 @@
-<h1>People#edit</h1>
-<p>Find me in app/views/people/edit.html.erb</p>
-<h1><%=current_person.id%></h1>
+<div>
 <%=form_for(@person, url:{controller:"people",action:"update",id:@person.id}) do |form| %>
     <div class = "form-group" >
       <label for = "name">Name</label>
-      <%= form.text_field :name, class: "form-control" %>
+      <h4><%= form.text_field :name, class: "form-control" %></h4>
     </div>
     <div class = "form-group" >
       <label for = "native_language">What is your native language</label>
@@ -16,11 +14,14 @@
     </div>
     <div class = "form-group" >
       <label for = "self_introduction">self introduction</label>
-      <%= form.text_area :self_introduction, class: "form-control" %>
+      <h4><%= form.text_area :self_introduction, class: "form-control" %></h4>
     </div>
     <div class = "form-group" >
       <label for = "self_introduction">Image</label><br>
-      <%= form.file_field :image%>
+      <p><%= form.file_field :image%></p>
     </div>
-    <%= form.submit class:"btn btn-primary" %>
+    <div class = "form-group" >
+      <h4><%= form.submit class:"btn btn-primary" %></h4>
+    </div>
 <% end %>
+</div>

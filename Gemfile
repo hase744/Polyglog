@@ -55,3 +55,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'slim-rails'
 gem 'html2slim'
+#imageアップロード用
+gem 'carrierwave'

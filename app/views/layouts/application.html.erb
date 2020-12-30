@@ -16,7 +16,7 @@
       
       <li class="menu_on_left"><%= link_to "People", '/people/index'%></li>
       <% if current_person != nil %>
-      <li class="menu_on_left"><%= link_to "Profile", "/people/edit_profile/#{current_person.id}" %></li>
+      <li class="menu_on_left"><%= link_to "Profile", "/people/#{current_person.id}" %></li>
       <% end %>
       <li class="menu_on_left"><a href="#about">About</a></li>
       <%if person_signed_in? %>
