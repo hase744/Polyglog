@@ -1,0 +1,23 @@
+<h1>messages#show</h1>
+<p>Find me in app/views/messages/show.html.erb</p>
+    <div class="box11">
+    <% @person = Person.find_by(name: @message.person)%>
+    <img src=<%="#{@person.image}" %> alt="person" align="left">
+    <h3><%=@message.title%></h3>
+    <h6><%=@message.person%></h6>
+    <h6><%=@message.language%></h6><br>
+        <p><%=@message.content%></p>
+        <% if current_person != nil %>
+        <% if current_person.name == @message.person %>
+        <a style="text-align: right" href="javascript:delData(<%=@message.id %>);">Delete</a>
+        <% end %>
+        <% end %>
+    </div>
+<script>
+    function delData(num){
+        if (confirm("このデータを削除しますか？")){
+            document.location = "/messages/delete/" + num;
+        }
+        return false;
+    }
+  </script>

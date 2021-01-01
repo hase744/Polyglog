@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
   devise_for :people
+  get 'messages/index'
+  get 'messages/add/:id', to:'messages#add'
+  get 'messages/:id', to:'messages#show'
+  get 'messages/edit'
+  post "messages/create", to:"messages#create"
+  post "messages/update/:id", to:"messages#update"
+  patch "messages/update/:id", to:"messages#update"
+  get "messages/delete/:id", to:"messages#delete"
+
   get 'people/index'
   get 'people/add'
   get 'people/:id', to:'people#show'

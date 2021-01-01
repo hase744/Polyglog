@@ -1,0 +1,18 @@
+<h1>messages#index</h1>
+<p>Find me in app/views/messages/index.html.erb</p>
+<div class="box11">
+    <h4>タイトル</h4>
+    <p>ここに文章</p>
+</div>
+<% @messages.each do |message| %>
+<div class="box11">
+<% @person = Person.find_by(name: message.person)%>
+    <img src=<%="#{@person.image}" %> alt="person" align="left">
+    <a class="detail_of_message" href="/messages/<%=message.id%>">
+    <h3><%=message.title%></h3>
+    <h6><%=message.person%></h6>
+    <h6><%=message.language%></h6><br>
+    <p clear="left"><%=message.content%></p>
+    </a>
+</div>
+<% end %>
