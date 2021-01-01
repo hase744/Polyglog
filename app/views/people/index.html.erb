@@ -10,13 +10,13 @@
       <td><%= obj.native_language %></td>
       <td><%= obj.language_to_study %></td>
       <%if current_person != nil %>
-      <%if obj.id == current_person.id %>
-      <td>
-        <a href="/people/edit_profile/<%= obj.id %>">Edit</a>
-      </td>
-      <td>
-        <a href="javascript:delData(<%=obj.id %>);">Delete</a>
-      </td>
+        <%if obj.id == current_person.id %>
+        <td>
+          <a href="/people/edit_profile/<%= obj.id %>">Edit</a>
+        </td>
+        <td>
+          <a href="javascript:delData(<%=obj.id %>);">Delete</a>
+        </td>
       <%else %>
         <td> </td><td></td>
       <% end %>

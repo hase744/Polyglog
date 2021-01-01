@@ -5,7 +5,7 @@
     <title>TemplateDir</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= Gon::Base.render_data %>   
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.css">
@@ -18,11 +18,12 @@
 
 
       <% if current_person != nil %>
-      <li class="menu_on_left"><%= link_to "Profile", "/people/#{current_person.id}" %></li>
+        <li class="menu_on_left"><%= link_to "Profile", "/people/#{current_person.id}" %></li>
       <% end %>
-      <li class="menu_on_left"><a href="#about">About</a></li>
       <%if person_signed_in? %>
-      <li class="menu_on_left"><%= link_to "new", "/messages/add/#{current_person.id}"%></li>
+        <%if current_person.language_to_study != nil && current_person.native_language != nil%>
+          <li class="menu_on_left"><%= link_to "new", "/messages/add/#{current_person.id}"%></li>
+        <% end %>
         <li class="menu_on_right"><%= link_to "logout", destroy_person_session_path, method: :delete%></li>
       <%else%>
         <li class="menu_on_right"><%= link_to "login", new_person_session_path%></li>

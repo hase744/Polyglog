@@ -1,11 +1,15 @@
 class PeopleController < ApplicationController
   before_action :ensure_correct_person, {only:[:edit_profile, :update, :destroy]}
+  before_action :who_is_current_person, {only:[:show]}
   def index
     @people = Person.all
   end
 
   def show
     @person = Person.find(params[:id])
+    gon.current_person_email = @ccurent_person.email
+    gon.person_email = @person.email
+    @messages = Message.all
   end
 
   def add
@@ -49,6 +53,14 @@ class PeopleController < ApplicationController
       else
        redirect_to("/people/index")
       end
+    end
+  end
+
+  def who_is_current_person
+    if current_person == nil
+      @ccurent_person ="false"
+    else
+      @ccurent_person = current_person
     end
   end
 

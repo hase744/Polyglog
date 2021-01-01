@@ -1,9 +1,4 @@
-<%if @person.native_language == nil || @person.language_to_study == nil%>
-<% re%>
-<h1>空<h1>
-<% end %>
-  
-  <div id="ww">
+<div id="ww">
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2 centered">
@@ -12,9 +7,9 @@
         <% else %>
           <img src=<%="#{@person.image}" %> alt="Stanley">
         <% end %>
-          <h1><%=@person.name%></h1>
-          <h5>native language : <%=@person.native_language%></h5>
-          <h5>language I study : <%=@person.language_to_study%></h5>
+          <h1 id="person_name" ><%=@person.name%></h1>
+          <h5>native language : <span id="person_native_language"><%=@person.native_language%></span></h5>
+          <h5>language I study : <span id="person_language_to_study"><%=@person.language_to_study%></span></h5>
           <p><%=@person.self_introduction %></p>
           <%if current_person != nil %>
           <%if @person.id == current_person.id %>
@@ -26,17 +21,24 @@
     </div>
   </div>
   </tr>
+  <% @messages.each do |message| %>
+    <div class="box11">
+    <% @person = Person.find_by(name: message.person)%>
+        <a class="detail_of_message" href="/messages/<%=message.id%>">
+        <p clear="left"><%=message.content%></p>
+        <h6><%=message.created_at%></h6><br>
+        </a>
+    </div>
+  <% end %>
 
   <body>
-  <div id="open">
-    詳細をみる
-  </div>
+  
   <div id="mask" class="hidden"></div>
   <section id="modal" class="hidden">
-    <p>He said that that that that that boy used in the sentence was wrong.<br>あの少年がその文で使ったあのthatは間違っていたと彼は言った。</p>
-    <div id="close">
-      閉じる
-    </div>
+    <p id="modal_message">He said that that that that that boy used in the sentence was wrong.<br>あの少年がその文で使ったあのthatは間違っていたと彼は言った。</p>
+    <a href="/people/edit_profile/<%= @person.id %>">
+      <div id="close">Edit profile</div>
+    </a>
   </section>
   
 </body>
@@ -44,15 +46,41 @@
 <script>
 'use strict';
 {
-  const open = document.getElementById('open');
+  
   const close = document.getElementById('close');
   const modal = document.getElementById('modal');
   const mask = document.getElementById('mask');
-
-  open.addEventListener('click', function () {
+  const modal_message = document.getElementById('modal_message');
+  const person_name = document.getElementById('person_name').innerHTML;
+  const person_native_language = document.getElementById('person_native_language').innerHTML;
+  const person_language_to_study = document.getElementById('person_language_to_study').innerHTML;
+  var info_to_input = ""
+  if (person_name == ""){
+    info_to_input += "name"
+  }
+  if (person_native_language == ""){
+    search_info_to_input()
+    info_to_input += "native language"
+  }
+  if (person_language_to_study == ""){
+    search_info_to_input()
+    info_to_input += "language you want to study"
+  }
+  
+  if(info_to_input != "" && gon.person_email == gon.current_person_email){
     modal.classList.remove('hidden');
     mask.classList.remove('hidden');
-  });
+    info_to_input = "Input profile about your " + info_to_input
+    modal_message.innerHTML = info_to_input
+  }
+
+   function search_info_to_input(){
+     if(info_to_input != ""){
+      info_to_input += ", "
+     }
+   }
+  
+
   close.addEventListener('click', function () {
     modal.classList.add('hidden');
     mask.classList.add('hidden');

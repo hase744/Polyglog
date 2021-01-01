@@ -57,3 +57,5 @@ gem 'slim-rails'
 gem 'html2slim'
 #imageアップロード用
 gem 'carrierwave'
+#jsに変数渡す
+gem 'gon'

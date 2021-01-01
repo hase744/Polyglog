@@ -51,7 +51,7 @@ body {
   text-align: center;
   padding: 12px;
   margin: 16px auto 0;
-  background: #4caf50;
+  background: #FFA500;
   color: white;
 }
 
@@ -68,7 +68,7 @@ body {
 #modal {
   background: #fff;
   color: #555;
-  width: 300px;
+  width: 600px;
   padding: 40px;
   border-radius: 4px;
   position: absolute;
@@ -92,3 +92,10 @@ body {
   transform: translate(0, -500px);
 }
 
+//show
+.image{
+  width:75px;
+  height:75px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
