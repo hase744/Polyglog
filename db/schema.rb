@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_30_085217) do
+ActiveRecord::Schema.define(version: 2021_01_01_170239) do
+
+  create_table "corrections", force: :cascade do |t|
+    t.text "person"
+    t.integer "original_id"
+    t.text "original_message"
+    t.text "corrected_message"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "messages", force: :cascade do |t|
     t.text "title"

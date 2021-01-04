@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
     before_action :ensure_correct_person, {only:[:add, :edit_profile, :update, :destroy, :destroy]}
+    before_action :who_is_current_person, {only:[:show]}
     def index
         @messages = Message.all
     end
@@ -8,7 +9,8 @@ class MessagesController < ApplicationController
     end
 
     def show
-        @message = Message.find_by(params[:id])
+        @message = Message.find(params[:id])
+        @correction = Correction.new
     end
     
     def add
@@ -51,6 +53,14 @@ class MessagesController < ApplicationController
            redirect_to("/messages/index")
           end
         end
+    end
+
+    def who_is_current_person
+      if current_person == nil
+        @ccurent_person ="false"
+      else
+        @ccurent_person = current_person
+      end
     end
 
     private

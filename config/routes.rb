@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'corrections/index'
+  get 'corrections/add'
+  get 'corrections/show'
+  get 'corrections/edit/:id', to:'corrections#edit'
+  post "corrections/create", to:"corrections#create"
   devise_for :people
   get 'messages/index'
   get 'messages/add/:id', to:'messages#add'

@@ -12,13 +12,54 @@
     <p clear="left"><%=@message.content%></p>
     <p clear="left" align="right"><%=@message.created_at%></p>
     </a>
+    <%if @current_person.id == @person .id %>
+    <p style="text-align: right" clear="left"><a style="text-align: right" href="javascript:delData(<%=@person.id %>);">Delete</a></p>
+    <% else %>
+      <p style="text-align: right"><%= link_to "Correct", "/corrections/edit/#{@message.id}" %></p>
+    <% end %>
 </div>
+<body>
+    <div id="open">
+      詳細をみる
+    </div>
+    <div id="mask" class="hidden"></div>
+    <section id="modal" class="hidden">
+      <p><%=@message.content%></p>
+      <%=form_for(@correction, url:{controller:"corrections",action:"create"}) do |form| %>
+      <div class = "form-group" >
+        <label for = "content">Message</label>
+            <h4><%= form.text_area :corrected_message, size: "20x10", class: "form-control input_contetnt", value:@message.content %></h4>
+      </div>
+      <% end %>
+      <div id="close">
+        閉じる
+      </div>
+    </section>
+</body>
 
 <script>
-    function delData(num){
-        if (confirm("このデータを削除しますか？")){
-            document.location = "/messages/delete/" + num;
-        }
-        return false;
+const open = document.getElementById('open');
+const close = document.getElementById('close');
+const modal = document.getElementById('modal');
+const mask = document.getElementById('mask');
+
+  open.addEventListener('click', function () {
+    modal.classList.remove('hidden');
+    mask.classList.remove('hidden');
+  });
+  close.addEventListener('click', function () {
+    modal.classList.add('hidden');
+    mask.classList.add('hidden');
+  });
+  mask.addEventListener('click', function () {
+    modal.classList.add('hidden');
+    mask.classList.add('hidden');
+  });
+  
+function delData(num){
+    if (confirm("このデータを削除しますか？")){
+        document.location = "/messages/delete/" + num;
     }
+    return false;
+}
   </script>

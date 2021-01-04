@@ -7,9 +7,9 @@ class PeopleController < ApplicationController
 
   def show
     @person = Person.find(params[:id])
+    @messages = Message.where(person:@person.name)
     gon.current_person_email = @ccurent_person.email
     gon.person_email = @person.email
-    @messages = Message.all
   end
 
   def add
